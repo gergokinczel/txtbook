@@ -1,0 +1,168 @@
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.0" xml:lang="hu">
+    <info>
+        <title>Helló, Gutenberg!</title>
+        <keywordset>
+            <keyword/>
+        </keywordset>
+        <cover>
+            <para>
+                Programozás tankönyvek rövid olvasónaplói.
+            </para>
+        </cover>
+    </info>
+    <section>
+        <title>Programozási alapfogalmak</title>
+        <para>         
+            <citation>PICI</citation>       
+        </para>
+        <para>
+            Juhász István ezen könyve a fiatal informatikusoknak nyújt bevezetést ennek a csodálatos tudományágnak a világába. 
+        </para><para>
+            Az első fejezetekben megismerkedhetünk a különféle alapfogalmakkal, melyeket kötelező tudnia mindenkinek, aki csak 
+            ebben a szakmában elszeretne helyezkedni. Olyan dolgokról szerezhetünk tudást, mint például a különböző programozási 
+            nyelvek, típusok, ezeknek fontossága és alapvetőleges működése.
+            </para><para>
+            Ez után elkezdjük belemélyíteni magunkat a magas szintű programozási nyelvek világába, melynek egyik első fontos 
+            kulcsszava az adattípus(ok), melyek lehetnek egyszerű, összetett vagy akár mutató típusok. Ezen részt követve 
+            említődnek meg a konstansok és változók, amik ugyancsak elengedhetetlen alapkövei egy programnak.
+            </para><para>
+            Harmadik fő fejezetünk a kifejezésekről szól, melyet megmagyaráz és példákkal bemutat C programozási nyelvben. 
+            </para><para>
+            A soron következő cím az Utasítások, mely talán a legnagyobb fejezetet foglalja magába az egész könyvben, nem is 
+            hiába, ugyanis ezek az eljárásorientált nyelveknek olyan egységei, melyeken alapulhat maga a program. 
+            Két fő csoportba osztható: a deklarációs és végrehajtható utasítások. Ez utóbbira kerül inkább a nagyobb hangsúly, 
+            ugyanis kilenc másik csoportot foglal magába: értékadó, üres, ugró, elágazó, ciklusszervező, hívó, vezérlésátadó, 
+            I/O és egyéb utasítások.
+            </para><para>
+            Ezek után ugrunk egy kicsit a könyvben, hogy megismerkedjünk a programok szerkezete című fejezettel. 
+            Itt ahogyan azt a cím is sugallja, nem másról, mint a programoknak a felépítéséről lesz szó, melyek a nagyobb 
+            alkotóelemei, és melyek azok az eljárások, amikkel ezeket módosítjuk, kihasználjuk. A legfőbb alkotóelem, melyet 
+            megtanulunk az az alprogram, aminek a segítségével több különböző részre tudunk egy programot felosztani, lehetővé 
+            és egyszerűbbé téve a csoportban való dolgozást, ugyanakkor pedig sokkal átláthatóbbá is teszi a programunkat. 
+            De nem ezek az egyedüli előnyei, több más gyakorlati haszna is van mely felmerülhet, ilyen például a rekurzió. 
+            Más is beletartozik egy program szerkezetébe persze, nem csak az alprogram, ide tartozik még a: 
+            Másodlagos belépési pontok, paraméterkiértékelés, paraméterátadás, a blokk és a hatáskör.
+            </para><para>
+            Kicsit tapasztalt programozóként már azért megtanulhattuk azt is, hogy nem mindig minden tökéletes elsőre, 
+            sőt sokadik alkalomra se, ugyanakkor nem mindig tudni mindennek a pontos végkimenetelét. Ezért is olyan fontos a 
+            kivételkezelés, mellyel ugyancsak foglalkozik egy későbbi fejezet, és amely kapcsán kérdéseket is feltesz, amiket 
+            egy programnyelvnek mindenképpen meg kell válaszolnia ezen a téren.
+            </para><para>
+            A könyv végére megismerünk még olyan hasznos dolgokat is, mint az Input/Output eszközök és azoknak különböző 
+            változatait számos programnyelven, így munkánk nem csak a program környezetén belül, hanem azon kívül is változtathat
+            dolgokat.
+        </para>
+    </section>        
+    <section>
+        <title>Programozás bevezetés</title>
+        <para>                
+            <citation>KERNIGHANRITCHIE</citation>
+        </para>
+        <para>
+            Megoldás videó: <link xlink:href="https://youtu.be/zmfT9miB-jY">https://youtu.be/zmfT9miB-jY</link>
+        </para>
+        <para>
+            A Kernighan és Ritchie által készített C programozási nyelvről szóló könyvben átnézzük a nyelvhez tartozó utasításokat,
+            azok szerkezetét.
+            A legfontosabb vezérlési szerkezetek kerülnek bemutatásra a soron következő felsorolásban:
+        </para>
+            <itemizedlist mark="disc">
+                <listitem>
+                <para>
+                     Utasítások és blokkok:
+                    Átlagosan, egy kifejezés utasítássá válik, ha egy pontosvessző kerül utána.
+                    Blokkokat {} kapcsos zárójelek segítségével jelöljük.
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                     If-else: 
+            Döntés kifejezésére használható, az else rész tetszés szerint elhagyható. Amennyiben az if(kifejezés)-ben teljesül
+                    a kifejezés (értéke nem nulla), az if után szereplő utasítás(-ok) elvégződnek. Ellenkező esetben, vagy nem végződik
+                    el az utasítás, vagy amennyiben van else rész, az kerül elvégzésre.
+                </para>
+            </listitem>
+            
+            <listitem>
+                <para>
+                     Else if:
+            Ennek segítségével az előző utasítást tudjuk bővíteni, annyi döntést adhatunk hozzá a folyamathoz, ahányat szeretnénk.
+                </para>
+            </listitem>
+            
+            <listitem>
+                <para>
+                     Switch: 
+            Lehetővé teszi a többirányú programelágazást, azaz összehasonlítja a kapott kifejezés értékét több állandó kifejezés
+                    értékével, majd kiválasztván az eleget tevőt, annak az utasításait elvégzi. Ezeket az eseteket <function>case</function>
+                    jelöli, és amennyiben egyik eset sem teljesül, a <function>default</function> értékre áll át.
+                </para>
+            </listitem>
+            
+            <listitem>
+                <para>
+                     While és for:
+            Ismétlő utasítások, melyek mindenek előtt elvégeznek egy kiértékelést, ha az teljesül(nem nulla a kifejezés), elvégzi az utasítást, majd újra 
+                    elvégzi a kiértékelést, mindaddig, amíg az már nem teljesül. Egyedüli különbség a két utasítás között, hogy 
+                    a for ciklus három komponenssel rendelkezik, melyek közül általában az 1. és a 3. értékadás vagy függvényhívás,
+                    a 2. pedig egy relációs kifejezés. 
+                </para>
+            </listitem>
+            
+            <listitem>
+                <para>
+                     Do-while:
+            Egyedüli különbség az előző ismétlő utasításokhoz képest az, hogy mivel a leállítás feltétele a ciklus végén van,
+                    az utasítást legalább egyszer mindenképpen elvégzi.
+                </para>
+            </listitem>
+            
+            <listitem>
+                <para>
+                     Break:
+            Ennek segítségével ki tudunk lépni a for,while, do ciklusból és a switch-ből, anélkül, hogy teljesülne a feltétel.
+            Megjegyzés: csak a legbelső ciklusból lép ki.
+                </para>
+            </listitem>
+            
+            <listitem>
+                <para>
+                     Continue:
+            Elég ritkán alkalmazott utasítás, szerepe, hogy hatására a ciklus, melyben található, a következő iterációs lépést elvégzi.
+                </para>
+            </listitem>
+            
+            <listitem>
+                <para>
+                     Goto:
+            Segítségével tetszésünkre ugrálhatunk a megadott címkére bárhol a programunkban, meglehetősen kényelmesen. 
+                    Ennek ellenére nem túl javasolt a használata, mivel kevésbé átláthatóbb tőle a program. Szerencsére
+                    minden goto-val írt program megírható nélküle is.
+                </para>
+            </listitem>
+   </itemizedlist>
+        <para>
+            A könyv függelékében rátalálhatunk még az utasításokról szóló fejezetre is, mely különböző csoportokba sorolja be
+            az előzőleg felsorolt utasításokat. Ezek lennének a: címkézett utasítások, kifejezésutasítások, összetett utasítások,
+            kiválasztó utasítások, iterációs utasítások és vezérlésátadó utasítások
+        </para>        
+    </section>        
+    <section>
+        <title>Programozás</title>
+        <para>                
+            <citation>BMECPP</citation>
+        </para>
+        <para>                
+        A Budapesti Műszaki Egyetem ezen könyvében a C++ rejtelmeiről, újításairól kaphatunk egy átfogó bemutatást.
+	</para><para>
+        A bevezetést követő fejezetben a C++ nem objektumorientált újdonságairól számol be a könyv, ugyanakkor összehasonlításba kerül elődjével, a C-vel, rávezetve minket a C++-ban rejlő potenciálra és a rengeteg újításra, ami bekerült. Szó esik többek között: függvényparaméterek és visszatérési értékekről, a main függvényről, bool típusról, több bájtos sztringekről, változódeklarációról mint utasítás, függvénynevek túlterheléséről, függvényargumentumokról és még sok másról.
+	</para><para>
+            A harmadik fejezetben értelemszerűen a nyelv objektumorientáltságáról  számol be, ami az egyik legfőbb tulajdonsága a C++ nyelvnek. Ez az attribútum ugyanis rengeteg különféle módon segíti a programnyelvet kényelmesebbé és átláthatóbbá tenni. Ahogyan azt a könyv is leírja: egységbe zárjuk az adatokat(encapsulation), az ezáltal kinyert egységet osztálynak nevezzük(class), ennek az osztálynak pedig az önálló példányait objektumoknak hívjuk(object). 
+Persze ez nem csak ennyire egyszerű, sok más dologra is fel lehet használni ezt a fajta adat struktúrát, és sok mindent is követel egy osztály helyes használata. Ezekről mind beszámol a könyv ezen fejezete: tagfüggvények, adatrejtés, konstruktorok	 - dekonstruktorok, dinamikus adatkezelés(egy nagyon esszenciális rész), friend függvények, tagváltozó inicializálás, statikus tagok és beágyazott definíciók.
+	</para><para>
+            Ugorva egy pár fejezetet a könyvben találjuk meg az operátor túlterhelésről szóló részt, ami azért olyan jelentős, mert lehetővé teszi, hogy az olyan alap műveletekhez használt operátorokat, mint az összeadás +, kivonás -, szorzás *, osztás /, nem csak egész vagy akár lebegőpontos típusú változókkal tudjuk használni, hanem az általunk osztályok segítségével elkészített mátrixok és komplex számokkal is. Találkozhatunk speciális esetekkel is, amikor például az operator=-t kell definiálnunk hogyha éppen mélymásolatot szeretnénk, legfőképpen dinamikus adattag esetén. 
+	</para><para>
+            Még egy keveset ugorván, eljutunk a kivételkezelést bemutató fejezethez, ami abból az okból kifolyólag jelentős, hogy C-vel ellentétben, itt egy sokkal strukturáltabb, átláthatóbb és könnyebben karbantartható hibakezelési lehetőség áll rendelkezésünkre. Ugyanakkor nem hiába nevezik kivétel-kezelésnek, mivel nem csak hibákat, de bármilyen általunk előre nem belátott eredmény orvosolni tudunk vele pl. egy if() throw segítségével.
+        </para>
+    </section>        
+</chapter>                

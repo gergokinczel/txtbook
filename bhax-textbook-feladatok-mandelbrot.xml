@@ -1,0 +1,136 @@
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.0" xml:lang="hu">
+    <info>
+        <title>Helló, Mandelbrot!</title>
+        <keywordset>
+            <keyword/>
+        </keywordset>
+    </info>
+    <section>
+        <title>A Mandelbrot halmaz</title>
+        <para>
+                
+        </para>
+        <para>
+            Megoldás videó: <link xlink:href="https://youtu.be/gvaqijHlRUs">https://youtu.be/gvaqijHlRUs</link>
+        </para>
+        <para>
+            Megoldás forrása: <link xlink:href="https://sourceforge.net/p/udprog/code/ci/master/tree/source/kezdo/elsocpp/mandelbrot/mandelbrot.cpp#l1">https://sourceforge.net/p/udprog/code/ci/master/tree/source/kezdo/elsocpp/mandelbrot/mandelbrot.cpp#l1</link>               
+        </para>
+        <para>
+            Tanulságok, tapasztalatok, magyarázat...
+        </para>
+        <para>
+            A Mandelbrot-halmaz egy síkbeli alakzat, amelyet egy alapvetően nagyon egyszerű algebrai összefüggés bonyolultabb 
+            (végtelennel kapcsolatos, analitikus fogalmakat, határértékszámítást igénylő) elemzése ad meg, rajzol ki. 
+            Ezeknek az összefüggéseknek a még legegyszerűbb (bár nem az egyetlen lehetséges) 
+            megközelítési módja a komplex számok felhasználásával történhet.
+            A Mandelbrot-halmazt Benoît Mandelbrot fedezte fel, és Adrien Douady és John Hamal Hubbard nevezte el róla 1982-ben.
+        </para>
+    </section>        
+        
+    <section>
+        <title>A Mandelbrot halmaz a <filename>std::complex</filename> osztállyal</title>
+        <para>
+            Megoldás videó: <link xlink:href="https://youtu.be/gvaqijHlRUs">https://youtu.be/gvaqijHlRUs</link>
+        </para>
+        <para>
+            Megoldás forrása: <link xlink:href="https://github.com/gergokinczel/unideb/blob/Mandel/mandel_komplex.cpp">https://github.com/gergokinczel/unideb/blob/Mandel/mandel_komplex.cpp</link>               
+        </para>
+        <para>
+            Tanulságok, tapasztalatok, magyarázat...
+        </para>
+        <para>
+            A program megközelítése ugyanzaz, egyetlen különbség, hogy egy általunk készített struktúra helyett felhasználjuk
+            a complex osztályt, melyben előre elkészített struktúrákat alkalmazunk.
+        </para>
+    </section>        
+                
+    <section>
+        <title>Biomorfok</title>
+        <para>
+        </para>
+        <para>
+            Megoldás videó: <link xlink:href="https://youtu.be/IJMbgRzY76E">https://youtu.be/IJMbgRzY76E</link>
+        </para>
+        <para>
+            Megoldás forrása: <link xlink:href="https://gitlab.com/nbatfai/bhax/tree/master/attention_raising/Biomorf">https://gitlab.com/nbatfai/bhax/tree/master/attention_raising/Biomorf</link>
+        </para>
+        <para>
+            Tanulságok, tapasztalatok, magyarázat...
+        </para>
+        <para>
+            A biomorfok biológikusnak kinéző Pickover Szálak. Az 1980-as évek végén Clifford Pickover létrehozott úgynevezett
+            biological feedback organizmusokat, hasonlóakat a Júlia és Mandelbrot halmazokhoz. Pickover szerint egy biomorf egy
+            olyan algoritmus, melyet változatos és összetett formák létrehozására lehet használni, melyek ugyanakkor 
+            gerinctelen életformákra hasonlítanak. Ezek az alakok bonyolultak és nehéz őket megjósolni mielőtt feltérképeznénk a kimenetelüket.
+        </para>                        
+    </section>                     
+
+    <section>
+        <title>A Mandelbrot halmaz CUDA megvalósítása</title> 
+        <para>
+        </para>
+        <para>
+            Megoldás videó: <link xlink:href="https://youtu.be/gvaqijHlRUs">https://youtu.be/gvaqijHlRUs</link>
+        </para>
+        <para>
+            Megoldás forrása:  
+        </para>
+        <para>
+            Tanulságok, tapasztalatok, magyarázat...
+        </para>
+        <para>
+            
+        </para> 
+    </section>                     
+
+    <section>
+        <title>Mandelbrot nagyító és utazó C++ nyelven</title>
+        <para>
+            Építs GUI-t a Mandelbrot algoritmusra, lehessen egérrel nagyítani egy területet, illetve egy pontot
+            egérrel kiválasztva vizualizálja onnan a komplex iteréció bejárta z<subscript>n</subscript> komplex számokat!
+        </para>
+        
+        <para>
+            Megoldás videó: <link xlink:href="https://bhaxor.blog.hu/2018/09/02/ismerkedes_a_mandelbrot_halmazzal">https://bhaxor.blog.hu/2018/09/02/ismerkedes_a_mandelbrot_halmazzal</link>
+        </para>
+        
+        <para>
+            Megoldás forrása:  <link xlink:href="https://github.com/gergokinczel/unideb/tree/Mandel/mandelbrot_rgb">https://github.com/gergokinczel/unideb/tree/Mandel/mandelbrot_rgb</link>
+        </para>
+        <para>
+            Tanulságok, tapasztalatok, magyarázat...
+        </para>
+        <para>
+            A Mandelbrot nagyító a Mandelbrot halmaz létrehozását viszi egy lépéssel tovább. Minden egyes alkalommal, amikor ráközelítünk
+            a kép egy részére, a program azt újrarajzolja "kinagyítja", de mivel a halmaz egy fraktál, ezt a végtelenségig meg tudjuk ismételni,
+            elérve érdekesebbnél érdekesebb formákat.
+        </para>
+        <para>
+            
+        </para> 
+    </section>                     
+                                                                                                                                                                            
+    <section>
+        <title>Mandelbrot nagyító és utazó Java nyelven</title>
+        <para>
+            Megoldás videó: <link xlink:href="https://youtu.be/Ui3B6IJnssY">https://youtu.be/Ui3B6IJnssY</link>
+        </para>
+
+        <para>
+            Megoldás forrása:  <link xlink:href="https://www.tankonyvtar.hu/hu/tartalom/tkt/javat-tanitok-javat/apbs02.html#id570518">https://www.tankonyvtar.hu/hu/tartalom/tkt/javat-tanitok-javat/apbs02.html#id570518</link>
+        </para>
+        <para>
+            Tanulságok, tapasztalatok, magyarázat...
+        </para>
+        <para>
+            Látványában nem különbözik sokat a nagyító a C++-os verzióhoz képest, mégis kivitelezésében egy sokkal átláthatóbb
+            kódot kapunk. Forráskódunk két osztályra van felosztva, az egyikben találjuk meg a halmaz kiszámolását egy megadott
+            pontban, ezt felhasználván a másik osztályban szerepel a halmaz tényleges lerajzolása, egy pillanatkép készítése,
+            e mellett pedig a jobb egérgombbal való klikkeléskor elküldi a másik osztálynak az egér x,y koordinátája szerint 
+            rámutatott csomópontot, amivel újraszámolja a halmazt így "nagyítva" a képet. Ezt a folyamatot annyiszor tudjuk megismételni
+            ahányszor csak szeretnénk.
+        </para> 
+    </section>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+</chapter>                

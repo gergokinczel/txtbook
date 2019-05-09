@@ -1,0 +1,279 @@
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.0" xml:lang="hu">
+    <info>
+        <title>Helló, Caesar!</title>
+        <keywordset>
+            <keyword/>
+        </keywordset>
+    </info>
+    <section>
+        <title><type>double **</type> háromszögmátrix</title>
+        
+        <para>
+            Megoldás videó: <link xlink:href="https://www.youtube.com/watch?v=1MRTuKwRsB0">https://www.youtube.com/watch?v=1MRTuKwRsB0</link> 
+        </para>
+        <para>
+            Megoldás forrása:                
+        </para>
+        <programlisting language="c"><![CDATA[#include <stdio.h>
+	#include <stdlib.h>
+	int main ()
+	{
+	    int nr = 5;
+	    double **tm;
+	    printf("%p\n", &tm);
+	    if ((tm = (double **) malloc (nr * sizeof (double *))) == NULL)
+	    {
+		return -1;
+	    }
+	    printf("%p\n", tm);
+	    for (int i = 0; i < nr; ++i)
+	    {
+		if ((tm[i] = (double *) malloc ((i + 1) * sizeof (double))) == NULL)
+		{
+		    return -1;
+		}
+	    }
+	    printf("%p\n", tm[0]);
+	    for (int i = 0; i < nr; ++i)
+		for (int j = 0; j < i + 1; ++j)
+		    tm[i][j] = i * (i + 1) / 2 + j;
+	    for (int i = 0; i < nr; ++i)
+	    {
+		for (int j = 0; j < i + 1; ++j)
+		    printf ("%f, ", tm[i][j]);
+		printf ("\n");
+	    }
+	    for (int i = 0; i < nr; ++i)
+	    {
+		for (int j = 0; j < i + 1; ++j)
+		    printf ("%f, ", tm[i][j]);
+		printf ("\n");
+	    }
+	    for (int i = 0; i < nr; ++i)
+		free (tm[i]);
+	    free (tm);
+	    return 0;
+	}
+	]]></programlisting>
+        <para>
+            Tanulságok, tapasztalatok, magyarázat...
+        </para>    
+        <para>
+            A program létrehoz egy double ** típusú változót, amely egy tömb memóriacímére mutat, majd ennek a tömbnek minden
+            eleme is egy-egy memóriacímre fog mutatni, méghozzá az adott elem sorszámának megfelelő mennyiségű tömb elemre, ahogyan
+            azt az alábbi ábra is reprezentálja. A <function>malloc</function> segítségével mindíg annyi memóriacímet foglalhatunk
+            le amennyire szükségünk van, jelen esetben amekkora a mérete az adott változótípusnak.
+        </para>
+        <para>
+        <inlinemediaobject>
+		<imageobject>
+                            <imagedata fileref="matrix.png"/>
+		</imageobject>
+                <textobject>
+                            <phrase>Háromszögmátrix</phrase>
+                </textobject>
+	</inlinemediaobject>
+        </para>
+    </section> 
+           
+    <section>
+        <title>C EXOR titkosító</title>
+        <para>
+            Írj egy EXOR titkosítót C-ben!
+        </para>
+        <para>
+            Megoldás videó:
+        </para>
+        <para>
+            Megoldás forrása:                
+        </para>
+        <para>
+            <programlisting language="c"><![CDATA[#include <stdio.h>
+	#include <unistd.h>
+	#include <string.h>
+	#define MAX_KULCS 100
+	#define BUFFER_MERET 256
+                
+	int main (int argc, char **argv)
+	{
+	  char kulcs[MAX_KULCS];
+	  char buffer[BUFFER_MERET];
+	  int kulcs_index = 0;
+	  int olvasott_bajtok = 0;
+	  int kulcs_meret = strlen (argv[1]);
+	  strncpy (kulcs, argv[1], MAX_KULCS);
+	  while ((olvasott_bajtok = read (0, (void *) buffer, BUFFER_MERET)))
+	    {
+	      for (int i = 0; i < olvasott_bajtok; ++i)
+		{
+		  buffer[i] = buffer[i] ^ kulcs[kulcs_index];
+		  kulcs_index = (kulcs_index + 1) % kulcs_meret;
+		}
+	      write (1, buffer, olvasott_bajtok);
+	    }
+	}
+	]]> </programlisting>			
+        </para>
+        <para>
+            Tanulságok, tapasztalatok, magyarázat...
+        </para>   
+        <para>
+            Az EXOR másnéven xor művelet bájtok lefedését, majd pedig a kizáró vagy művelet elvégzését az egymásra eső biteken
+            jelenti, azaz, ha a = 101 és b = 110 akkor a^b = 011.
+            A fent leírt program az xor művelet segítségével titkosít egy szöveget, melyhez egy általunk megadott kulcsot
+            használ. Eredeti szöveg ^ kulcs = titkos szöveg | Titkos szöveg ^ kulcs = eredeti szöveg
+        </para>      
+    </section>
+            
+    <section>
+        <title>Java EXOR titkosító</title>
+        <para>
+            Írj egy EXOR titkosítót Java-ban!
+        </para>
+        <para>
+            Megoldás videó:
+        </para>
+        <para>
+            Megoldás forrása:              
+        </para>
+        <para>
+        <programlisting language="java"><![CDATA[import java.io.InputStream;
+import java.io.OutputStream;
+
+public class ExorTitkosító {
+    
+    public static void Exor(String kulcsSzöveg,java.io.InputStream bejövőCsatorna,java.io.OutputStream kimenőCsatorna)             
+    throws java.io.IOException {
+            
+        byte [] kulcs = kulcsSzöveg.getBytes();
+        byte [] buffer = new byte[256];
+        int kulcsIndex = 0;
+        int olvasottBájtok = 0;
+
+        while((olvasottBájtok = bejövőCsatorna.read(buffer)) != -1) 
+        {
+            for(int i=0; i<olvasottBájtok; ++i) 
+            {
+                buffer[i] = (byte)(buffer[i] ^ kulcs[kulcsIndex]);
+                kulcsIndex = (kulcsIndex+1) % kulcs.length;
+            }
+            kimenőCsatorna.write(buffer, 0, olvasottBájtok);
+        }  
+    }
+    
+    public static void main(String[] args) {
+        
+        try 
+        {
+            ExorTitkosító(args[0], System.in, System.out);
+        } 
+        catch(java.io.IOException e) { e.printStackTrace(); }
+    } 
+}
+	]]> </programlisting>
+        </para>
+        <para>
+            Tanulságok, tapasztalatok, magyarázat...
+        </para>
+        <para>
+            Lényeges különbséget nem tapasztalhatunk a C verziós és a Java verziós EXOR titkosító között.
+            Itt az algoritmus az ExorTitkosító osztályban lett megvalósítva, de ugyanazt az elvet használja, 
+            mint az előző feladatban leírt verzió. A külső while ciklus buffer tömbönként addig olvassa a bemenetet, 
+            amíg csak tudja. A belső for ciklusban helyezzük rá a kulcsot a beolvasott bájtokra a kulcsIndex változó segítségével, 
+            majd végrehajtjuk a kizáró vagy műveletet, az eredmény a buffer tömbben keletkezik, amit végül a kimenetre írunk. 
+        </para>        
+    </section>
+           
+    <section>
+        <title>C EXOR törő</title>
+        <para>
+            Írj egy olyan C programot, amely megtöri az első feladatban előállított titkos szövegeket!
+        </para>
+        <para>
+            Megoldás videó:
+        </para>
+        <para>
+            Megoldás forrása:<link xlink:href="https://github.com/gergokinczel/unideb/blob/master/c_exor_toro.c">https://github.com/gergokinczel/unideb/blob/master/c_exor_toro.c</link>         </para>
+        <para><link xlink:href="https://progpater.blog.hu/2011/02/15/felvetelt_hirdet_a_cia?fbclid=IwAR20XPCHTlyHUvM0GGA5adxYhVhwFfd8wup-dUNn7_8rb3_mQb4Seq4Kb4w">https://progpater.blog.hu/2011/02/15/felvetelt_hirdet_a_cia?fbclid=IwAR20XPCHTlyHUvM0GGA5adxYhVhwFfd8wup-dUNn7_8rb3_mQb4Seq4Kb4w</link>   </para>      
+        
+        <para>
+            Tanulságok, tapasztalatok, magyarázat...
+        </para>
+        <para>
+            A C EXOR törő lényege, hogy megtalálja a kulcsot mely egy EXOR-ral titkosíott magyar szöveget feltör és 
+            amely kulcsnak a mérete akár 8 karakter. Ez után pedig kiírja a kulcsot és a tiszta szöveget.
+            A program úgy végzi a kulcs megtalálását, hogy minden lehetséges kulcs kombinációt kipróbál, majd a legmegfelelőbbet
+            kiválasztja(legmegfelelőbb itt egy olyan szövegre céloz mely gyakori magyar szavakat tartalmaz, és ugyanakkor
+            az átlagos szóhossznak is eleget tesz).
+        </para>       
+    </section>  
+          
+    <section>
+        <title>Neurális OR, AND és EXOR kapu</title>
+        <para>
+            R
+        </para>
+        <para>
+            Megoldás videó: <link xlink:href="https://youtu.be/Koyw6IH5ScQ">https://youtu.be/Koyw6IH5ScQ</link>
+        </para>
+        <para>
+            Megoldás forrása: <link xlink:href="https://gitlab.com/nbatfai/bhax/tree/master/attention_raising/NN_R">https://gitlab.com/nbatfai/bhax/tree/master/attention_raising/NN_R</link>               
+        </para>
+        <para>
+            Tanulságok, tapasztalatok, magyarázat...
+        </para>
+        <para>
+            A neurális háló egy alapot képez a mesterséges intelligencia megértéséhez és elkészítéséhez. Ennek minimum három fő
+            rétege van. A bementeti réteg, amely a konkrét összehasonlítandó elemeket adja át. A köztes rétegben történik meg a 
+            tényleges művelet elvégzése, ilyen például a <function>vagy</function> és az <function>és</function> művelet. A kimeneti
+            rétegben pedig egy neuron/függvény melybe bekerül az információ.
+        </para>
+        <para>
+            A háló fő feladata, hogy az egyes neuronok egy értéket továbbítsanak, amennyiben a köztes rétegben szereplő érték elért
+            egy úgynevezett küszöbértéket, majd pedig egy véges lépésszám elvégzése után megközelítsék a valós eredményt.
+            Minden kapcsolat rendelkezik egy súlyal, amely az adott kapcsolat előjelét és erősségét határozza meg.
+        </para>
+        <para>
+            A forrásban szereplő példák közül a <function>vagy</function> és az <function>és</function> művelet bármi addíció nélkül
+            is kivételesen működik, az <function>XOR</function> művelethez viszont rejtett rétegekre is szükségünk van, hogy a kívánt pontosságot el
+            tudjuk érni. Ennek az az oka, hogy az <function>XOR</function> műveletet nem lehet lineárisan szeparálni, ellentétben 
+            a <function>vagy</function> és az <function>és</function> művelettel.
+        </para>
+        <para>
+        <inlinemediaobject>
+		<imageobject>
+                            <imagedata fileref="perceptron.png" scale="500"/>
+		</imageobject>
+                <textobject>
+                            <phrase>Műveletek függvényábrái</phrase>
+                </textobject>
+	</inlinemediaobject>
+        </para>
+    </section> 
+           
+    <section>
+        <title>Hiba-visszaterjesztéses perceptron</title>
+        <para>
+            C++
+        </para>
+        <para>
+            Megoldás videó: <link xlink:href="https://www.youtube.com/watch?v=XpBnR31BRJY">https://www.youtube.com/watch?v=XpBnR31BRJY</link>
+        </para>
+        <para>
+            Megoldás forrása: <link xlink:href="https://github.com/nbatfai/nahshon/blob/master/ql.hpp#L64">https://github.com/nbatfai/nahshon/blob/master/ql.hpp#L64</link>             
+        </para>
+        <para>
+            Tanulságok, tapasztalatok, magyarázat...
+        </para>
+        <para>
+            Azt a hálót, amelyben az összes bemenet közvetlenül a kimenetekre kapcsolódik egyrétegű neurális hálónak 
+            (single layer neural network) vagy perceptron (perceptron) hálónak nevezzük. Mivel mindegyik kimeneti egység 
+            független a többitől – mindegyik súly csak egyetlen kimenetre van hatással – vizsgálatainkat korlátozhatjuk az 
+            egykimenetű perceptronra. A perceptonok két fajta csomópontból tevődnek össze: bemeneti és kimenetiből. A két csomópont
+            között helyezkedik el az a súlyozott kapcsolat, mely meghatározza mennyire erős a ki és bemenet közötti viszony.
+            A háló aképpen tanul, hogy akár több száz ilyen súlyozást elvégez, majd egy bizonyos kimeneti érték felé konvergál
+            ami valószínűleg a megoldás.
+        </para>          
+    </section>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+</chapter>                
